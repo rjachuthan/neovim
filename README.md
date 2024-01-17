@@ -1,6 +1,6 @@
 # Rituraj's Personal Neovim Configuration
 
-This repository contains my personal [Neovim](neovim.io) configuration, heavily inspired by TypeCraft's comprehensive video series on Neovim setup and customization. It's designed to enhance the text editing experience with a focus on efficiency and ease of use.
+This repository contains my personal [Neovim](https://neovim.io) configuration, heavily inspired by TypeCraft's comprehensive video series on Neovim setup and customization. It's designed to enhance the text editing experience with a focus on efficiency and ease of use.
 
 ## Features
 

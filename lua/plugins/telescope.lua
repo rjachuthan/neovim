@@ -17,7 +17,7 @@ return {
 		},
 		keys = {
 			{ "<leader>sf", ":Telescope git_files<cr>", desc = "Find Files (root dir)" },
-			{ "<C-p>", ":Telescope find_files<cr>", desc = "Find Files (root dir)" },
+			{ "<C-p>", ":Telescope find_files theme=dropdown<cr>", desc = "Find Files (root dir)" },
 			{ "<leader><space>", ":Telescope buffers<cr>", desc = "Find Buffers" },
 			{ "<leader>sg", ":Telescope live_grep<cr>", desc = "Search Project" },
 			{ "<leader>ss", ":Telescope lsp_document_symbols<cr>", desc = "Search Document Symbols" },
