@@ -1,7 +1,7 @@
 vim.cmd("set expandtab")
--- vim.cmd("set tabstop=2")
--- vim.cmd("set softtabstop=2")
--- vim.cmd("set shiftwidth=2")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
 
 -- Show vertical ruler after 80 characters
 vim.opt.colorcolumn = "81"
@@ -51,11 +51,11 @@ vim.o.termguicolors = true
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
 
 -- Indentation
