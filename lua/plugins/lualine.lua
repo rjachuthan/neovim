@@ -9,13 +9,13 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "auto",
+        theme = "iceberg_dark",
 				icons_enabled = true,
 				-- section_separators = { left = "", right = "" },
 				-- component_separators = { left = "", right = "" },
 				component_separators = "|",
 				section_separators = "",
-				globalstatus = false,
+				globalstatus = true,
 			},
 			sections = {
 				lualine_a = { "mode" },
