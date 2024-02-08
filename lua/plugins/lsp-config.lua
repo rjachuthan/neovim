@@ -26,7 +26,13 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.tsserver.setup({ capabilities = capabilities })
-			lspconfig.pyright.setup({ capabilities = capabilities, filetypes = { "python" } })
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+				filetypes = { "python" },
+				on_attach = function(client, bufnr)
+					require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+				end,
+			})
 
 			-- LSP Diagnostic Icons
 			vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
@@ -40,6 +46,13 @@ return {
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 			vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format, { desc = "Format Code" })
+		end,
+	},
+	{
+		"artemave/workspace-diagnostics.nvim",
+		lazy = true,
+		config = function()
+			require("lazy").setup({ "workspace-diagnostics.nvim" })
 		end,
 	},
 }
