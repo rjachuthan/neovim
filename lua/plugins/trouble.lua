@@ -26,7 +26,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>xx", ":TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+		{ "<C-S-m>", ":TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
 		{ "<leader>xX", ":TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
 		{ "<leader>xl", ":TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
 		{ "<leader>xq", ":TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
