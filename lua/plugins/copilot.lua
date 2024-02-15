@@ -58,10 +58,24 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     opts = {
-      show_help = "yes",      -- Show help text for CopilotChatInPlace, default: yes
-      debug = false,          -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+      show_help = "yes",
+      debug = false,
       disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-      -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
+      prompts = {
+        Explain = "Explain how it works.",
+        Review = "Review the following code and provide concise suggestions.",
+        Tests = "Briefly explain how the selected code works, then generate unit tests.",
+        Refactor = "Refactor the code to improve clarity and readability.",
+        FixCode = "Fix the following code to make it work as intended.",
+        BetterNamings = "Provide better names for the following variables and functions.",
+        Documentation = "Provide documentation for the following code.",
+        DocString = "Provide DocString for the following code in Numpy Style.",
+        -- Text related prompts
+        Summarize = "Summarize the following text.",
+        Spelling = "Correct any grammar and spelling errors in the following text.",
+        Wording = "Improve the grammar and wording of the following text.",
+        Concise = "Rewrite the following text to make it more concise.",
+      },
     },
     build = function()
       vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
@@ -77,7 +91,7 @@ return {
         desc = "CopilotChat - Open in vertical split",
       },
       {
-        "<leader>z",
+        "<c-i>",
         ":CopilotChatInPlace<cr>",
         mode = "x",
         desc = "CopilotChat - Run in-place code",
