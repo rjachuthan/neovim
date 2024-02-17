@@ -102,4 +102,10 @@ return {
 			})
 		end,
 	},
+	{
+		"j-hui/fidget.nvim", -- For Cleaner LSP Progress messages.
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
 }
