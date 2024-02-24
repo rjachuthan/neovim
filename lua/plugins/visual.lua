@@ -108,12 +108,6 @@ return {
 		end,
 	},
 	{
-		"j-hui/fidget.nvim", -- For Cleaner LSP Progress messages.
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
