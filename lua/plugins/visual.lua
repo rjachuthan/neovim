@@ -27,9 +27,9 @@ return {
 	{
 		"lukas-reineke/virt-column.nvim",
 		config = function()
-			require("virt-column").setup({
-				-- char = "|",
+      require("virt-column").setup({
 				virtcolumn = "80,120",
+        char = "┊",
 			})
 		end,
 	},
@@ -37,20 +37,13 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
+    enabled = false,
 		config = function()
-			require("ibl").setup()
-			local highlight = {
-				"CursorColumn",
-				"Whitespace",
-			}
 			require("ibl").setup({
-				indent = { highlight = highlight, char = "" },
-				whitespace = {
-					highlight = highlight,
-					remove_blankline_trail = false,
-				},
-				scope = { enabled = false },
-			})
+        -- indent = {
+        --   char = "┊"
+        -- }
+      })
 		end,
 	},
 	{
