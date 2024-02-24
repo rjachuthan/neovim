@@ -1,5 +1,5 @@
 return {
-	-- { "catppuccin/nvim" },
+	{ "catppuccin/nvim" },
 	{
 		"rose-pine/neovim",
 		lazy = false,
@@ -27,9 +27,9 @@ return {
 	{
 		"lukas-reineke/virt-column.nvim",
 		config = function()
-      require("virt-column").setup({
+			require("virt-column").setup({
 				virtcolumn = "80,120",
-        char = "┊",
+				char = "┊",
 			})
 		end,
 	},
@@ -37,13 +37,13 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
-    enabled = false,
+		enabled = false,
 		config = function()
 			require("ibl").setup({
-        -- indent = {
-        --   char = "┊"
-        -- }
-      })
+				-- indent = {
+				--   char = "┊"
+				-- }
+			})
 		end,
 	},
 	{
@@ -111,5 +111,13 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup({})
+		end,
 	},
 }
