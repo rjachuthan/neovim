@@ -8,44 +8,48 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
-			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"bashls",
-					"html",
-					"emmet_ls",
-					"jsonls",
-					"cssls",
-					"marksman",
-					"lua_ls",
-					"tsserver",
-					"pyright",
-				},
-			})
+			-- LSP servers and clients are able to communicate to each other what features they support
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-			-- Setup language servers.
-			local lspconfig = require("lspconfig")
-
-			lspconfig.pyright.setup({}) -- pip install pyright
-			lspconfig.bashls.setup({}) -- npm i -g bash-language-server
-			lspconfig.html.setup({}) -- npm i -g vscode-langservers-extracted
-			lspconfig.emmet_ls.setup({}) -- npm install -g emmet-ls
-			lspconfig.marksman.setup({})
-			lspconfig.tailwindcss.setup({}) -- npm install -g @tailwindcss/language-server
-			lspconfig.jsonls.setup({}) -- npm i -g vscode-langservers-extracted
-			lspconfig.tsserver.setup({}) -- npm install -g typescript typescript-language-server
-			lspconfig.lua_ls.setup({
-				settings = {
-					Lua = {
-						-- Make the language server know about "vim" keyword as a Global
-						diagnostics = { globals = { "vim" } },
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
-							},
+			-- Setting up list of LSP Servers to be installed
+			local servers = {
+				pyright = {}, -- pip install pyright
+				bashls = {}, -- npm i -g bash-language-server
+				html = {}, -- npm i -g vscode-langservers-extracted
+				emmet_ls = {}, -- npm install -g emmet-ls
+				marksman = {},
+				tailwindcss = {}, -- npm install -g @tailwindcss/language-server
+				jsonls = {}, -- npm i -g vscode-langservers-extracted
+				tsserver = {}, -- npm install -g typescript typescript-language-server
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
 						},
 					},
+				},
+			}
+			local ensure_installed = vim.tbl_keys(servers or {})
+			vim.list_extend(ensure_installed, { "stylua" })
+
+			-- Setup language servers.
+			require("mason").setup()
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			require("mason-lspconfig").setup({
+				handlers = {
+					function(server_name)
+						local server = servers[server_name] or {}
+						require("lspconfig")[server_name].setup({
+							cmd = server.cmd,
+							settings = server.settings,
+							filetypes = server.filetypes,
+							-- This handles overriding only values explicitly passed
+							-- by the server configuration above. Useful when disabling
+							-- certain features of an LSP (for example, turning off formatting for tsserver)
+							capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+						})
+					end,
 				},
 			})
 
@@ -101,10 +105,6 @@ return {
 					})
 				end,
 			})
-
-			-- LSP servers and clients are able to communicate to each other what features they support
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		end,
 	},
 	-- {
