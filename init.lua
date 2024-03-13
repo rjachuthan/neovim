@@ -19,4 +19,5 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("default-keybindings")
 require("lazy").setup("plugins")
+require("current-theme")
 
