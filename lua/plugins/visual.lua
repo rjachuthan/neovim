@@ -100,4 +100,13 @@ return {
 			require("bufferline").setup({})
 		end,
 	},
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+      user_default_options = {
+        tailwind = true,
+      },
+    },
+  },
 }
