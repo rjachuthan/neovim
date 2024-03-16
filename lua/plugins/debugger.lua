@@ -65,15 +65,6 @@ return {
 		end,
 	},
 	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
-		config = function()
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-			require("dap-python").setup(path)
-		end,
-	},
-	{
 		"theHamsta/nvim-dap-virtual-text",
 		config = function()
 			require("nvim-dap-virtual-text").setup()
