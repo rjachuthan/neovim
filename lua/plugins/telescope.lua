@@ -22,7 +22,8 @@ return {
       { "<leader><space>", ":Telescope buffers<cr>",                       desc = "Find Buffers" },
       { "<leader>sg",      ":Telescope live_grep<cr>",                     desc = "Search Project" },
       { "<leader>ss",      ":Telescope lsp_document_symbols<cr>",          desc = "Search Document Symbols" },
-      { "<leader>sw",      ":Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search Workspace Symbols" },
+      -- { "<leader>sw",      ":Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Search Workspace Symbols" },
+      { "<leader>sw",      ":Telescope grep_string<cr>", desc = "Search Underlying String" },
       { "<leader>th",      ":Telescope themes<cr>", desc = "Change Themes" },
     },
     opts = {
