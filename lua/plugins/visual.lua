@@ -66,9 +66,14 @@ return {
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+
+      -- Change the background_colour of lualine
+      local custom_iceberg = require("lualine.themes.iceberg_dark")
+      custom_iceberg.normal.c.bg = "#000000"
+
       require("lualine").setup({
         options = {
-          theme = "iceberg_dark",
+          theme = custom_iceberg,
           icons_enabled = true,
           -- section_separators = { left = "", right = "" },
           -- component_separators = { left = "", right = "" },
@@ -85,6 +90,7 @@ return {
           lualine_z = { "location" },
         },
       })
+
     end,
   },
   {
