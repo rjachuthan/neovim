@@ -103,7 +103,14 @@ return {
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("bufferline").setup({})
+      require("bufferline").setup({
+        highlights = {
+          fill = {
+            fg = "#000000",
+            bg = "#000000",
+          }
+        }
+      })
     end,
   },
   {
