@@ -25,3 +25,4 @@ vim.cmd([[
   highlight SignColumn guibg=NONE ctermbg=NONE
   highlight LineNr guibg=NONE ctermbg=NONE
 ]])
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
