@@ -15,13 +15,12 @@ return {
       -- Setting up list of LSP Servers to be installed
       local servers = {
         pyright = {}, -- pip install pyright
-        bashls = {},  -- npm i -g bash-language-server
-        html = {},    -- npm i -g vscode-langservers-extracted
+        bashls = {}, -- npm i -g bash-language-server
+        html = {}, -- npm i -g vscode-langservers-extracted
         emmet_ls = {}, -- npm install -g emmet-ls
         marksman = {},
         tailwindcss = {}, -- npm install -g @tailwindcss/language-server
-        jsonls = {},  -- npm i -g vscode-langservers-extracted
-        tsserver = {}, -- npm install -g typescript typescript-language-server
+        jsonls = {}, -- npm i -g vscode-langservers-extracted
         debugpy = {},
         lua_ls = {
           settings = {
@@ -78,11 +77,7 @@ return {
           map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
           map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
           map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-          map(
-            "<leader>ws",
-            require("telescope.builtin").lsp_dynamic_workspace_symbols,
-            "[W]orkspace [S]ymbols"
-          )
+          map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
           map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
           map("<leader>ca", function()
             vim.lsp.buf.code_action({ context = { only = { "quickfix", "refactor", "source" } } })

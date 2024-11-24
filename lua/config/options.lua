@@ -21,8 +21,8 @@ vim.o.mouse = "a"
 --    -> If it returns 0, then either install `xclip` or `wl-clipboard` on wayland
 vim.opt.clipboard = "unnamedplus"
 
--- Enable break indent
-vim.o.breakpoint = true
+-- Enable break indent (This is not working in MacOS)
+-- vim.o.breakpoint = true
 
 -- Save undo history
 vim.o.undofile = true
